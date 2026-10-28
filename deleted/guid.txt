@@ -1,0 +1,7 @@
+OPEN POWERSHELL
+1. npm install and also npm install --save-dev nodemon
+   note: this both frontend and backend
+2. npm run dev
+
+
+

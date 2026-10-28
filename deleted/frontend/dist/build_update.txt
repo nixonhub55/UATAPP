@@ -1,0 +1,14 @@
+$source = "C:\Apache24\htdocs\DEMO\uatmoon\frontend\dist"
+$destination = "C:\Apache24\htdocs\DEMO\uatmoon"
+$backup = "C:\Apache24\htdocs\DEMO\uatmoon-backup-$(Get-Date -Format yyyyMMdd-HHmmss)"
+
+if (!(Test-Path "$source\index.html")) {
+    throw "Build output not found. Check the source path."
+}
+
+if (Test-Path $destination) {
+    Copy-Item $destination $backup -Recurse
+}
+
+New-Item -ItemType Directory -Force -Path $destination | Out-Null
+robocopy $source $destination /E
